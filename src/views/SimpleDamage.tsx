@@ -432,7 +432,6 @@ export function SimpleDamage() {
     }
     return DEFAULTS;
   });
-  const [maxRef, setMaxRef] = useState(150_000_000);
   const [targetLife, setTargetLife] = useState(10_000);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [enemy, setEnemy] = useState<EnemyInputs>(() => {
@@ -542,10 +541,12 @@ export function SimpleDamage() {
     localStorage.setItem(LS_KEY_ENEMY, JSON.stringify(enemy));
   }, [enemy]);
 
-  // Auto-scale maxRef upward when approaching the top
-  useEffect(() => {
-    if (total > maxRef * 0.92) setMaxRef((r) => r * 10);
-  }, [total, maxRef]);
+  // Dynamic axis max: keep damage marker at ~4/5 of the log axis, min 10M
+  const maxRef = useMemo(() => {
+    const logTarget = Math.log10(Math.max(total, 1)) * 1.25;
+    const pow = Math.pow(10, Math.ceil(logTarget));
+    return Math.max(pow, 10_000_000);
+  }, [total]);
 
   // Bar width as fraction of container (log scale)
   const barFraction = useMemo(
