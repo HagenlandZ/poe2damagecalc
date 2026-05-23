@@ -1,0 +1,55 @@
+:root {
+  --bg: #0d0d0d;
+  --bg-panel: #161616;
+  --bg-panel-2: #1e1e1e;
+  --border: #2a2a2a;
+  --text: #e0e0e0;
+  --text-muted: #888;
+  --accent: #c8a96e; /* PoE gold */
+
+  /* Damage type colours */
+  --col-physical: #c8c8c8;
+  --col-fire: #e05c1a;
+  --col-cold: #5ab4d4;
+  --col-lightning: #f0d040;
+  --col-chaos: #c040c0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.app-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+.app-header p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
