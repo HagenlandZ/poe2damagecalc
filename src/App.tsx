@@ -12,7 +12,7 @@ function App() {
     <div className="app">
       <header className="app-header">
         <div className="app-header__left">
-          <h1>PoE 2 Damage Model</h1>
+          <h1>POE2 Damage Dealer</h1>
           <p>
             {page === "simple"
               ? "Interactive damage calculator"
